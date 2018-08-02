@@ -1,0 +1,58 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		<div class="container"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<a href="{% url 'listar' %}" class="btn btn-primary">Regresar</a>
+				</div>
+				<div class="col-sm">
+					<p>Es importante saber que para asignar un usuario de inicio de sesion con la informacion del empleado es necesario crearlo con ayuda del SysAdmin</p>
+				</div>
+				<div class="col-sm"> si en dado caso el usuario no existe puedes dejar ese campo vacio o bien si tienes accesos de administrador puedes crearlo en esta </br> <a href="http://localhost:8000/admin/auth/user/">--> seccion <--</a></div>
+			</div>
+			<div class="row">
+				<table class="table">
+					{{form.as_table}}
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-sm"></div>
+				<div class="col-sm">
+					<button type="submit" class="btn btn-success">Guardar</button>	
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock content %}
+
+{% block script %}
+	<script type="text/javascript">
+		$(function() {
+            $('#id_fecha_nacimiento').datepicker({
+                showWeek:true,
+                changeMonth:true,
+                changeYear:true,
+                yearRange:'1948:' + (new Date()).getFullYear(),
+                dateFormat:'dd/mm/yy',
+                showAnim:'fold'
+            }).setAttribute("autocomplete", "off");
+
+            $('#id_fecha_contratacion').datepicker({
+                showWeek:true,
+                changeMonth:true,
+                changeYear:true,
+                yearRange:'1948:' + (new Date()).getFullYear(),
+                dateFormat:'dd/mm/yy',
+                showAnim:'fold'
+            }).setAttribute("autocomplete", "off");
+        });
+	</script>
+{% endblock script %}

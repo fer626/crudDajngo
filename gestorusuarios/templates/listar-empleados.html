@@ -1,0 +1,50 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div class="container">
+	
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm"></div>
+	</div>
+	<div class="row">
+		<div class="col-sm"></div>
+		<div class="col-sm"></div>
+		<div class="col-sm">
+			<a href="{% url 'guardar' %}" class="btn btn-primary">Nuevo empleado</a>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm">
+			<table class="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Nombre</th>
+						<th scope="col">Apellido(s)</th>
+						<th scope="col">Telefono</th>
+						<th scope="col">Correo</th>
+						<th scope="col">Opciones</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for persona in personas %}
+						<tr>
+							<th scope="row">1</th>
+							<td>{{ persona.nombre }}</td>
+							<td>{{ persona.apellidos }}</td>
+							<td>{{ persona.telefono }}</td>
+							<td>{{ persona.correo}}</td>
+							<td>
+								<a href="{% url 'editar' persona.id %}" class="btn btn-warning">Editar</a>
+								<a href="{% url 'eliminar' persona.id %}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock content %}

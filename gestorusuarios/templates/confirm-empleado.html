@@ -1,0 +1,35 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		<div class="container"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-sm"></div>
+			</div>
+			<div class="row">
+				<div class="col-sm">
+					<a href="{% url 'listar' %}" class="btn btn-primary">Regresar</a>
+				</div>
+				<div class="col-sm"></div>
+				<div class="col-sm"></div>
+			</div>
+			<div class="row">
+				<table class="table">
+					<p><h3>Estas a punto de borrar permanentemente toda la informacion del empleado(a): <b><strong>{{persona.nombre}} {{ persona.apellidos }}</strong></b></h3></p>
+					</br>
+					<p><h1>Estas seguro de realizar esta accion?</h1></p>
+				</table>
+			</div>
+			<div class="row">
+				<div class="col-sm"></div>
+				<div class="col-sm"></div>
+				<div class="col-sm">
+					<a type="submit" href="{% url 'listar' %}" class="btn btn-warning">Cancelar</a>
+					<button type="submit" class="btn btn-danger">Confirmar</button>
+				</div>
+			</div>
+		</div>
+	</form>
+{% endblock content %}
